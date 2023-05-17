@@ -1,0 +1,28 @@
+<br />
+<h1>Parent Component</h1>
+
+<div>
+  <input type="text" [(ngModel)]="arrayOfInputStrings" />
+  &nbsp;&nbsp;
+  <button
+    class="btn btn-danger"
+    *ngIf="!addAndEditButton; else editTemplate"
+    (click)="inputFromTextBox()"
+  >
+    Add
+  </button>
+  &nbsp;&nbsp;
+  <ng-template #editTemplate>
+    <button
+      class="btn btn-success"
+      *ngIf="addAndEditButton"
+      (click)="editInput()"
+    >
+      Edit
+    </button>
+  </ng-template>
+</div>
+<app-child
+  [inputFromParent]="inputValues"
+  (newItemEvent)="arrayToShowInputValue($event)"
+></app-child>

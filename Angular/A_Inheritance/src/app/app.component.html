@@ -1,0 +1,62 @@
+<button
+  type="button"
+  class="btn btn-primary mt-2 ms-2"
+  (click)=" modalForTextBox(content)"
+>
+  Add Textbox
+</button>
+<button
+  type="button"
+  class="btn btn-primary mt-2 ms-2"
+  (click)=" modalForTextArea(content)"
+>
+  Add Textarea
+</button>
+<button
+  type="button"
+  class="btn btn-primary mt-2 ms-2"
+  (click)="modalForSelect(content)"
+>
+  Add Select
+</button>
+<br /><br />
+
+<app-form-creater [formGroup]="myForm" [fields]="fields"></app-form-creater>
+<br>
+<button
+  type="submit"
+  class="btn btn-success"
+  [disabled]="!myForm.valid"
+  (click)="onSubmit()"
+>
+  Submit
+</button>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ titleForModal }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click');"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-form-creater [formGroup]="modalForm" [fields]="fields"></app-form-creater>
+    <div *ngIf="titleForModal=='Add Select'">
+      <div *ngFor="let option of optionAryForSelect; let i=index">
+              <input style="width:100px;" #myinput1 placeholder='for label' >&nbsp;
+              <input style="width:100px;"  #myinput2 placeholder='for value' (change)="addingLabelAndValue(myinput1.value,myinput2.value)">&nbsp;
+              <button class="btn btn-success" type="button" (click)="addOptionBox(myinput1.value,myinput2.value)" *ngIf="optionAryForSelect.length - 1==i ">Add</button>&nbsp;
+              <button class="btn btn-danger" type="button" (click)="removeCustomOption(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" [disabled]="!modalForm.valid" type="submit" (click)="modalSubmit();modal.close();">Submit</button>
+  </div>
+</ng-template>
+
+

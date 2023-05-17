@@ -1,0 +1,29 @@
+.main {
+    border: 2px solid black;
+    width: 600px;
+    height: 300px;
+    margin-left: 400px;
+    margin-top: -350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn {
+    width: 100px;
+    margin-left:10px;
+}
+
+.Red {
+    background-color: Red;
+    color:white;
+}
+.Green {
+    background-color: green;
+    color:white;
+}
+.Blue {
+    background-color: blue;
+    color:white;
+}

@@ -1,0 +1,25 @@
+<textarea
+  (keyup)="createInputs()"
+  [(ngModel)]="myTextArea"
+  style="margin: 100px 250px"
+></textarea>
+
+<form [formGroup]="myForm" style="margin: -150px 550px" (ngSubmit)="onSubmit()">
+  <div formArrayName="inputFields">
+    <div *ngFor="let input of dataForInputTag; let index = index">
+      <div>
+        <input
+          [type]="input.type"
+          [placeholder]="input.placeholder || ''"
+          formControlName="{{ index }}"
+          [required]="input.required"
+          [email]="input.email"
+          [maxLength]="input.maxLength || 524288"
+          [minLength]="input.minLength"
+        />
+      </div>
+      <br />
+    </div>
+  </div>
+  <button type="submit"> Submit</button>
+</form>

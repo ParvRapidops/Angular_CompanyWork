@@ -1,0 +1,23 @@
+<div class="container"  >
+    <form class="form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" > 
+        <br>
+    <h2 style="margin-left: 50px;">Login here </h2>
+    <br>
+    <div class="form-group" style="margin-left:50px ;">
+      <label for="email"><span class="required-asterisk" style="color:red;" *ngIf="userEmailInput.pristine || userEmailInput.touched">*</span>Email:</label>
+      <input type="email" class="form-control forminput" #userEmailInput="ngModel" ngModel id="email" name="email"  placeholder="Enter email"  email required>
+      <span *ngIf ="userEmailInput.invalid && userEmailInput.dirty && userEmailInput.touched " style="color: red;">Email must be in required format.</span>
+    </div>  
+      <br>   
+      <div class="form-group" style="margin-left:50px ;">
+        <label for="pwd"><span class="required-asterisk" style="color:red;" *ngIf="userPasswordInput.pristine || userPasswordInput.touched">*</span>Password:</label>
+        <input type="password" class="form-control forminput" #userPasswordInput="ngModel" ngModel id="pwd"  placeholder="Enter password" name="password" minlength="5" required>
+        <span *ngIf ="userPasswordInput.errors?.['minlength'] && userPasswordInput.invalid && (userPasswordInput.dirty || userPasswordInput.touched)" style="color: red;">password must be in required format.</span>
+      </div>
+      <br><br>
+      <button type="submit" class="btn btn-success" style="margin-left: 360px;" [disabled]="!myForm.valid" routerLink="/login">Login</button>
+      <br><br>
+      <button class="btn btn-success" style="margin-top:-110px;margin-left:40px;" (click)="navigateToRegister()">Back To Register</button>
+    </form>
+  </div>
+

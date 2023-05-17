@@ -1,0 +1,10 @@
+<div>
+    <br>
+<h6>what is your Gender:</h6>
+<br><br>
+<div *ngFor="let option of ['male','female']" >
+    <label>{{option}}</label>
+    <input type="radio"  [formControl]="control" value={{option}}  required/>
+    <br>
+</div>
+</div>

@@ -1,0 +1,68 @@
+<h1>Custom Pipe Tasks</h1>
+<br />
+<div>
+  <h3>First Task</h3>
+  <div *ngIf="formatDiv">
+    {{ today | dateFormatPipe : myInput.value }}
+  </div>
+  <input
+  type="text"
+  #myInput
+  (keyup.enter)="inputFormatOfDate(myInput.value)"
+/>
+</div>
+
+<br><br>
+<div>
+
+    <div>
+      <h3>Second Task</h3>
+      <div *ngIf="diffDiv">
+        {{ today | dateDifferencePipe : myDate.value }}
+      </div>
+      <input type="date" #myDate />&nbsp;
+      <button
+        class="btn btn-success"
+        (click)="differenceBetweenDates(myDate.value)"
+      >
+        Find Difference
+      </button>
+    </div>
+    <br>
+    <div>
+      <h1>BuildIn Pipe Tasks</h1>
+      <br />
+      <div>
+        <h3>First Task</h3>
+        <p>The 2nd and 4th elements are:</p>
+        <p>{{ items | slice : 2 : 3 }}</p>
+        <p>{{ items | slice : 3 : 4 }}</p>
+      </div>
+      <br /><br />
+
+      <div>
+        <h3>Second Task</h3>
+        <p>Object without Json pipe:</p>
+        <p>{{ student }}</p>
+        <p>Object created with Json pipe:</p>
+        <p>{{ student | json }}</p>
+      </div>
+      <br /><br />
+
+      <div>
+        <h3>Third task</h3>
+        <p>printing dummy api response:</p>
+        <p></p>
+
+        <h1>{{ title }}</h1>
+        <ul>
+          <li *ngFor="let quote of data | async">
+            {{ quote.name }}
+          </li>
+        </ul>
+      </div>
+      <!-- <div *ngIf="(data$ | async) as data">
+    {{ data }}
+  </div> -->
+    </div>
+  </div>

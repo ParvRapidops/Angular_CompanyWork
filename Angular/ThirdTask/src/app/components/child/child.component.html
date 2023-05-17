@@ -1,0 +1,28 @@
+<h2>Child Component</h2>
+<br /><br />
+<p>
+  {{ inputFromParent }}
+</p>
+&nbsp;&nbsp;
+
+<div *ngFor="let value of inputBoxField; let inputIndex = index" class="mt-3 mb-3">
+  <input type="text" ngModel name={{value.value}} />
+  &nbsp;&nbsp;
+  <button
+    (click)="removeValue(inputIndex)"
+    *ngIf="value.removeButton"
+    class="btn btn-danger"
+  >
+    Remove
+  </button>
+  &nbsp;&nbsp;
+  <button
+    (click)="addValue(inputIndex)"
+    *ngIf="value.addButton"
+    class="btn btn-success"
+  >
+    ADD
+  </button>
+</div>
+<br />
+<button (click)="passData()" class="btn btn-success">Submit</button>

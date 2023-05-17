@@ -1,0 +1,125 @@
+<ng-template #myModal let-modal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body">
+        <select #mySelect (change)="onOptionSelected(mySelect.value)">
+          <option value="textbox" (click)="c('Save click');">TextBox</option>
+          <option value="numberbox" (click)="c('Save click');">NumberBox</option>
+          <option value="Radio" (click)="c('Save click');">Radio</option>
+          <option value="DropDown" (click)="c('Save click');">DropDown</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click');">Save</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-primary" (click)="openMyModal(myModal)">Generate CustomInputs</button>
+
+  
+
+
+
+<div id="CustomInputs" style="float:right;margin-top: -370px;">
+  <form [formGroup]="customDropDownForm" > 
+    <ng-template #dropdownBox let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+         
+  <div class="customTxt">
+    <div class="customTxt">
+      <label>Create Custom Dropdown</label><br>
+      <input type="text" style="width: 150px;" formControlName="customDropdownLabel" #txtDropdownLabel>&nbsp;
+      <br>  
+    <div formArrayName="options"><br>
+      <div *ngFor="let option of selectOptions(); let i=index">  
+        <input [formControlName]="i" style="width: 150px;" placeholder="{{i + 1}}">&nbsp;
+        <button type="button" (click)="addOptions()" *ngIf="i==0" class="btn btn-success">Add</button>
+        <button type="button" (click)="removeOption(i )" *ngIf="i!=0" class="btn btn-danger">R</button> 
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="generateDropdown(customDropDownForm,txtDropdownLabel.value);c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  </form>
+
+
+
+  <form [formGroup]="customRadioButtonForm" >
+  <ng-template #radioBox let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+         
+  <div class="customTxt">
+    <div class="customTxt">
+      <label>Create Custom Radio</label><br>
+      <input type="text" style="width: 150px;" formControlName="customRadiobuttonLabel" #txtRadiobtn>&nbsp;
+      <br>
+    <div formArrayName="options"> <br>
+      <div *ngFor="let option of selectOptionsForRadio(); let i=index">
+        <input [formControlName]="i"style="width: 150px;" placeholder="{{i + 1}}">&nbsp;
+        <button type="button" (click)="addOptionsForRadio()" *ngIf="i==0" class="btn btn-success">Add</button>
+        <button type="button" (click)="removeOptionOfRadio(i)" class="btn btn-danger" *ngIf="i!=0">R</button>
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="generateRadio(customRadioButtonForm,txtRadiobtn.value);c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  </form>
+
+
+
+  <form [formGroup]="customForm">
+     <ng-template #textbox let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <div class="customTxt">
+          <label>Create Custom Textbox</label><br>
+          <input type="text" formControlName="customTextbox" style="width: 150px;" #txt>&nbsp;
+        </div>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="generateTextbox(txt.value);c('Save click')">Save</button>
+      </div>
+    </ng-template>
+
+
+    <ng-template #numberbox let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+           
+    <div class="customTxt">
+      <label>Create Custom NumberTextbox</label><br>
+      <input type="text" style="width: 150px;" formControlName="customTextboxForNumber" #txtNumberType>&nbsp;
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="generateNumberTextbox(txtNumberType.value);c('Save click')">Save</button>
+      </div>
+    </ng-template>
+  </form>
+</div>

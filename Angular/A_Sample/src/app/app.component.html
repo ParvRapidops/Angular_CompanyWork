@@ -1,0 +1,12 @@
+<ng-template #dynamicTemplate>
+  <h1>hello world</h1>
+</ng-template>
+<h2>Parent Component</h2>
+<ng-template *ngTemplateOutlet="dynamicTemplate"></ng-template>
+
+
+<ng-template #myTemplate let-adscadsc let-message><h1>{{adscadsc}}</h1>   {{message}}</ng-template>
+
+<ng-container *ngTemplateOutlet="myTemplate;context:{abhi:'hello',$implicit:'motorola'}"></ng-container>
+
+<h1>{{'sdsd'|mycus}}</h1>

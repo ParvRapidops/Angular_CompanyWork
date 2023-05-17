@@ -1,0 +1,116 @@
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click');customForm.reset();"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div #formContainer></div>
+    <form [formGroup]="customForm" (submit)="onSubmit(customForm)">
+      <div>
+        <label class="form-control" for="displayName" class="form-label"
+          >DisplayName</label
+        >
+        <input
+
+          class="form-control"
+          id="displayName"
+          type="text"
+          formControlName="displayName"
+        />
+      </div>
+      <div>
+        <label class="form-control" for="Fieldname" class="form-label"
+          >FieldName</label
+        >
+        <input
+          class="form-control"
+          id="Fieldname"
+          type="text"
+          formControlName="fieldName"
+        />
+      </div>
+      <div>
+        <label class="form-control" for="Type" class="form-label">Type</label>
+        <input
+          class="form-control"
+          id="type"
+          (blur)="validInput()"
+          type="text"
+          formControlName="type"
+        />
+        <span  *ngIf="!isValid" style="color:red">{{errorMessage}}</span>
+      </div>
+  
+      <div  >
+        <label class="form-control" for="MinLength" class="form-label"
+          >minLength</label
+        >
+        <input
+          class="form-control"
+          id="minLength"
+          type="number"
+          formControlName="minLength"
+        />
+      </div>
+      <div  >
+        <label class="form-control" for="maxLength" class="form-label"
+          >maxLength</label
+        >
+        <input
+          class="form-control"
+          id="maxLength"
+          type="number"
+          formControlName="maxLength"
+        />
+      </div>
+      <div>
+        <label class="form-control" for="value" class="form-label">value</label>
+        <input
+          class="form-control"
+          id="value"
+          type="text"
+          formControlName="value"
+        />
+      </div>
+      <div >
+        <label class="form-control" for="isRequired" class="form-check-label"
+          >isRequired</label
+        >&nbsp;
+        <input
+          class="form-control"
+          type="checkbox"
+          formControlName="isRequired"
+          id="isRequired"
+          class="form-check-input"
+        />
+      </div>
+      <br/>
+      <div  >
+        <div *ngFor="let option of getCustomOptions(); let i=index">
+            <div [formGroupName]="i">
+                <input style="width:100px;" formControlName="label" placeholder="for label">&nbsp;
+                <input style="width:100px;" formControlName="value" placeholder="for value">&nbsp;
+                <button class="btn btn-success" type="button" (click)="addCustomOption()" *ngIf="getCustomOptions().length - 1==i ">Add</button>&nbsp;
+                <button class="btn btn-danger" type="button" (click)="removeCustomOption(i)">Remove</button>
+            </div>
+        </div>
+      </div>
+      <br />
+      <button
+        style="float: right"
+        type="submit"
+        (click)="modal.dismiss('Cross click')"
+        class="btn btn-outline-dark"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</ng-template>
+<br />

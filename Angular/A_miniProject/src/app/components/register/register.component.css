@@ -1,0 +1,12 @@
+.form {
+  border: 2px silver;
+  box-shadow: 2px 2px 2px 2px;
+  width: 500px;
+  border-radius: 10px;
+
+  margin: 70px 250px;
+}
+
+.forminput {
+  width: 360px;
+}

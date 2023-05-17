@@ -1,0 +1,45 @@
+<h1>Parent Component</h1>
+
+<br /><br /><br />
+<div style="margin: 40px 300px">
+  <input type="text" #inputVegetable  name="vegetableName"/>
+  &nbsp;
+  <input type="text" #inputKilogram name="vegetableKilogram"/>
+  &nbsp;
+  <button
+    class="btn btn-danger"
+    *ngIf="!addAndEditButton; else editTemplate"
+    (click)="addVegetableAndKilos(inputVegetable.value,inputKilogram.value)"
+  >
+    Add
+  </button>
+  <ng-template #editTemplate>
+    <button
+      class="btn btn-success"
+      *ngIf="addAndEditButton"
+      (click)="editInput(inputVegetable.value,inputKilogram.value)"
+    >
+      Edit
+    </button>
+  </ng-template>
+</div>
+
+<div style="margin-left: 300px"> 
+  <table>
+    <tr>
+      <th class="rowtd maintd">Vegetables</th>
+      <th class="rowtd maintd">Kilograms</th>
+    </tr>
+    <tr *ngFor="let currentVegetable of vegetablesAndKilograms" >
+      <td class="rowtd">{{ currentVegetable.vegetableName }}</td>
+      <td class="rowtd">{{ currentVegetable.vegetableKilogram }}</td>
+      <td class="removetd"><button class="btn btn-danger" (click)="removeCurrentRow(currentVegetable)">Remove</button></td>
+      <td class="removetd"><button class="btn btn-success" (click)="editCurrentRow(currentVegetable,inputVegetable,inputKilogram)">Edit</button></td>
+    </tr>
+  </table>
+
+  <button (click)="postDataToJsonServer(inputVegetable.value,inputKilogram.value)" class="btn btn-success">Post</button>
+ &nbsp;&nbsp;
+
+</div>
+

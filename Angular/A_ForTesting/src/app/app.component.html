@@ -1,0 +1,32 @@
+<div style="display: flex; margin: 100px 350px">
+  <input type="text" #fname class="form-control" style="width: 200px" />
+  &nbsp;&nbsp;
+  <input type="text" #lname class="form-control" style="width: 200px" />
+  &nbsp;&nbsp;
+  <button class="btn btn-primary" (click)="addInputs(fname, lname)">Add</button>
+</div>
+<button class="btn btn-success" style="margin-top: -350px;" (click)="onBtnIncludeColumns()">Include Age And marks</button>&nbsp;
+<button class="btn btn-danger" style="margin-top: -350px;"(click)="onBtnExcludeColumns()">Exclude Age And marks</button>
+
+  
+    
+<div>
+  <ag-grid-angular #agGrid *ngIf="rowData"
+    style="width: 1000px;margin-left: 100px; height: 500px; margin-top: -60px;"
+    class="ag-theme-alpine ag-font-style"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+    [rowBuffer]="rowBuffer"
+    [rowModelType]="rowModelType"
+    [maxConcurrentDatasourceRequests]="maxConcurrentDatasourceRequests"
+    [rowSelection]="rowSelection"
+    [paginationPageSize]="paginationPageSize"
+    [cacheOverflowSize]="cacheOverflowSize"
+    [maxBlocksInCache]="maxBlocksInCache"
+    [infiniteInitialRowCount]="infiniteInitialRowCount"
+    [datasource]="dataSource"
+  >
+  </ag-grid-angular>
+</div>
+

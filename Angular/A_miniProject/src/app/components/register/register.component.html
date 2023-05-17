@@ -1,0 +1,34 @@
+<div class="container"  >
+    <form class="form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" > 
+        <br>
+    <h2 style="margin-left: 50px;">Register here </h2>
+    <br>
+      <div class="form-group" style="margin-left:50px ;">
+        <label for="email"><span class="required-asterisk" style="color:red;" *ngIf="userEmailInput.pristine || userEmailInput.touched">*</span>Email:</label>
+        <input type="email" class="form-control forminput" #userEmailInput="ngModel" ngModel id="email" name="email"  placeholder="Enter email"  email required>
+        <span *ngIf ="userEmailInput.errors?.['email'] && userEmailInput.invalid && (userEmailInput.dirty || userEmailInput.touched)" style="color: red;">Email must be in required format.</span>
+      </div>       
+      <br>
+      <div class="form-group" style="margin-left:50px ;">
+        <label for="name"><span class="required-asterisk" style="color:red;" *ngIf="userNameInput.pristine || userNameInput.touched">*</span>Name:</label>
+        <input type="text" class="form-control forminput" #userNameInput="ngModel" ngModel id="name" placeholder="Enter name" minlength="5" name="name" required>
+        <span *ngIf ="userNameInput.errors?.['minlength'] && userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)" style="color: red;">Username must be at least 5 characters.</span>
+      </div>
+      <br>
+      <div class="form-group" style="margin-left:50px ;">
+        <label for="pwd"><span class="required-asterisk" style="color:red;" *ngIf="userPasswordInput.pristine || userPasswordInput.touched">*</span>Password:</label>
+        <input type="password" class="form-control forminput" #userPasswordInput="ngModel" ngModel id="pwd"  placeholder="Enter password" name="password" minlength="5" required>
+        <span *ngIf ="userPasswordInput.errors?.['minlength'] && userPasswordInput.invalid && (userPasswordInput.dirty || userPasswordInput.touched)" style="color: red;">password must be in required format.</span>
+      </div>
+      <br>
+        <div style="margin-left: 60px;" *ngFor="let option of ['Admin','User']">
+            <input type="radio" name="option" ngModel [value]="option" required > 
+            {{option}}
+        </div>
+      <br>
+      <button type="submit" class="btn btn-success" style="margin-left: 360px;" [disabled]="!myForm.valid" >Register</button>
+      <br><br>
+      <button class="btn btn-success" style="margin-top:-110px;margin-left:40px;" (click)="navigateToLogin()">Back To Login</button>
+    </form>
+  </div>
+

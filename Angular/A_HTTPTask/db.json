@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "name": "hello",
+      "kilo": "44",
+      "id": 2
+    },
+    {
+      "vegetableName": "",
+      "vegetableKilogram": "",
+      "id": 3
+    },
+    [
+      {
+        "vegetableName": "Spinach",
+        "vegetableKilogram": "23"
+      },
+      {
+        "vegetableName": "Potato",
+        "vegetableKilogram": "23"
+      }
+    ],
+    {
+      "vegetableName": "",
+      "vegetableKilogram": "",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

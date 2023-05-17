@@ -1,0 +1,8 @@
+<br>
+<label>{{radioBtnProperties.label}}</label>&nbsp;<button type="button" class="btn btn-danger" (click)="onRemove()" >Remove</button>
+<div *ngFor="let option of radioBtnProperties.option; let indexForControl=index">
+        <input type="radio" [formControl]="control"  [name]="radioBtnProperties.fieldName!" [value]="option">{{option}} 
+</div>
+<br>
+
+

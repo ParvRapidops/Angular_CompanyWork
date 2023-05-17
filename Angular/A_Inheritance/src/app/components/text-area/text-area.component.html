@@ -1,0 +1,8 @@
+<br>
+<span *ngIf="fieldMeta.isRequired" style="color: red;">*</span>
+<label>{{fieldMeta.displayName}}:</label>
+<div [formGroup]="formGroup">
+    <textarea (blur)="isValid()"  [formControlName]="fieldMeta.fieldName"></textarea>
+</div>
+<span *ngIf="!isVerified" style="color:red">{{errorMessage}}</span>
+<br>

@@ -1,0 +1,15 @@
+<a [routerLink]="testlink"> b </a>
+<div>
+  <a routerLink="a" [queryParams]="{abc: 'aaaa'}"> A </a>
+</div>
+<div>
+  <a routerLink="{{'a' + 343}}"> A </a>
+</div>
+<div>
+  <a routerLink="{{'a' + 4343}}"> A </a>
+</div>
+<div>
+  <a routerLink=""> Main </a>
+</div>
+
+<router-outlet></router-outlet>

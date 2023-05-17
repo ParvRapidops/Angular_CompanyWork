@@ -1,0 +1,10 @@
+<br><label>{{dropDownProperties.label}}</label>&nbsp;<button type="button" class="btn btn-danger" (click)="onRemove()" >Remove</button>
+<br>
+<select [formControl]="control" (change)="onChange()">
+    <ng-container *ngFor="let option of dropDownProperties.option">
+        <option [value]="option">{{option}}</option>
+    </ng-container> 
+</select>
+<br>
+
+

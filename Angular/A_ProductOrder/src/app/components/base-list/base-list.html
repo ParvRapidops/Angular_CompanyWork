@@ -1,0 +1,21 @@
+<div class="ag-theme-alpine" style="margin: 50px 250px;">
+    <h1>{{title}}</h1>
+    <input type="text" class="form-control" (keyup)="onKeyUp($event)" style="width:200px;"/>
+    <button class="btn btn-success" style="margin-left:500px;margin-top: -50px;" (click)="addData()">Add</button>
+    <br>
+    <ag-grid-angular
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      (gridReady)="onGridReady($event)"
+      class="ag-theme-alpine"
+      style="width: 800px; height: 300px;"
+    ></ag-grid-angular>
+
+    <ng-template #Modal>
+        <h1>helloWorld</h1>
+    </ng-template>
+</div>
+
+
+
+

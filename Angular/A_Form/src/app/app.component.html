@@ -1,0 +1,64 @@
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" style="margin:100px 350px;">
+   <div class="container">
+  <h2>Angular template driven form</h2>
+  &nbsp;&nbsp;
+    <div class="form-group">
+      <label for="uname">Username:</label>
+      <input type="text" class="form-control" ngModel placeholder="Enter username" name="username" minlength="5" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" ngModel placeholder="Enter email" name="email" email required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" ngModel placeholder="Enter password" name="password" required>
+    </div>
+
+
+    <div class="form-group" ngModelGroup="gender">
+      <label for="gdr">Gender:</label>
+      <br>
+      <input type="radio" [(ngModel)]="male" value="male" name="gender" required >
+      <label for="gdr">Male</label>
+      &nbsp;&nbsp;
+      <input type="radio" [(ngModel)]="female" value="female" name="gender" required>
+      <label for="gdr">Female</label>
+    </div>
+    <br>
+
+
+    <h4>Address (ngModelGroup)</h4>
+    <div ngModelGroup="address">    
+    <label for="street">Street:</label>
+      <input type="text" [(ngModel)]="street" name="street">
+      <br><br>
+      <label>City:</label>
+        <input type="text" [(ngModel)]="city" name="city">
+        <br><br>
+      <label> State:</label>
+        <input type="text" [(ngModel)]="state" name="state">
+        <br><br>
+      <label>Zip:</label>
+        <input type="text" [(ngModel)]="zip" name="zip">
+    </div>
+    <button type="submit" [disabled]="myForm.invalid"  class="btn btn-success">Submit</button>
+</div>
+
+
+
+<h1>{{myForm.value   | json}}</h1>
+
+
+<div #myDiv>
+hello world!
+</div>
+<!-- <app-child (inputToParent)="hello($event)"> </app-child> -->
+
+<h1>reactive forms</h1>
+property binding formGroup
+formControl to define controls
+custom validators need function
+bind method in custom validators is used to access outside 'this'
+logical validators will 

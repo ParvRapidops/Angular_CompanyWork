@@ -1,0 +1,10 @@
+<div [formGroup]="formGroup">
+  <span *ngIf="fieldMeta.isRequired" style="color: red;">*</span>
+  <label>{{fieldMeta.displayName}}:</label>
+  <select  [multiple]="fieldMeta.isMultiple" (blur)="isValid()"  [formControlName]="fieldMeta.fieldName">
+    <option *ngFor="let option of fieldMeta.options " [value]="option.value">{{option.label}}</option>
+  </select>
+</div>
+
+<span *ngIf="!isVerified" style="color:red">{{errorMessage}}</span>
+<br>
